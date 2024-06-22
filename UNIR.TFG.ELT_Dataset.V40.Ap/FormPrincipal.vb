@@ -191,11 +191,11 @@ Public Class FormPrincipal
     ' Retorno       : True --> la tabla se creó correctamente, False --> la tabla no se creó.
     '********************************************************************************
     Private Function cargarDatasetSAS() As Boolean
-        Dim objSAS As New Ng.SAS("CARFI")
+        Dim objSAS As New Ng.SAS(CType(ConfigurationAppSettings.GetValue("Nemonico", GetType(System.String)), String))
         Dim strPathDataset As String 'sin barra del final
         Dim strPathProgramaSAS As String = CType(ConfigurationAppSettings.GetValue("CarpetaProgramasSAS", GetType(System.String)), String)
         Dim ds As DataSet
-        Dim strLibSAS As String = "T_BSD_W" 'libreria SAS desde la que se tiene acceso al esquema de bbdd de oracle donde se creará la tabla
+        Dim strLibSAS As String = CType(ConfigurationAppSettings.GetValue("LibreriaAccesoW", GetType(System.String)), String) 'libreria SAS desde la que se tiene acceso al esquema de bbdd de oracle donde se creará la tabla
         Dim strExt As String = System.IO.Path.GetExtension(txtRuta.Text)
         Try
 
